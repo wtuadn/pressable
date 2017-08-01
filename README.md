@@ -3,8 +3,10 @@
 
 直接上图：
 
-<img src="demo.gif" width="50%" height="50%">
+<img src="demo.gif" width="40%">
+
 代码很简单，使用很方便
+
 ```xml
 <com.wtuadn.pressable.PressableTextView
             android:layout_width="150dp"
