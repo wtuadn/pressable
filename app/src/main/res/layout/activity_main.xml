@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <com.wtuadn.pressable.PressableTextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="no bg"
+            app:pressed_color="@color/default_black_pressed_color" />
+
+        <com.wtuadn.pressable.PressableTextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:background="#cccccc"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="color bg"
+            app:pressed_color="@color/default_black_pressed_color" />
+
+        <com.wtuadn.pressable.PressableTextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_gray_corners"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="shape bg"
+            app:pressed_color="@color/default_black_pressed_color" />
+
+        <com.wtuadn.pressable.PressableTextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_gray_round"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="shape bg"
+            app:pressed_color="@color/default_black_pressed_color" />
+
+        <com.wtuadn.pressable.PressableTextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="borderless"
+            app:borderless="true"
+            app:pressed_color="@color/default_black_pressed_color" />
+
+        <com.wtuadn.pressable.PressableTextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="mask_radius"
+            app:mask_radius="10dp"
+            app:pressed_color="@color/default_black_pressed_color" />
+
+        <com.wtuadn.pressable.PressableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:onClick="onClick"
+            android:src="@mipmap/ic_launcher"
+            app:pressed_color="@color/default_black_pressed_color" />
+
+        <com.wtuadn.pressable.PressableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:onClick="onClick"
+            android:src="@mipmap/ic_launcher"
+            app:borderless="true"
+            app:pressed_color="@color/default_black_pressed_color" />
+
+        <com.wtuadn.pressable.PressableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="onClick"
+            android:src="@mipmap/ic_launcher"
+            app:mask_radius="10dp"
+            app:pressed_color="@color/default_black_pressed_color" />
+
+        <com.wtuadn.pressable.PressableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:onClick="onClick"
+            android:src="@mipmap/ic_launcher"
+            app:mask_radius="10dp"
+            app:pressed_color="@color/default_black_pressed_color"
+            app:pressed_color_alpha="0.9" />
+
+        <com.wtuadn.pressable.PressableTextView
+            android:id="@+id/tv_code1"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="init with code 1" />
+
+        <com.wtuadn.pressable.PressableTextView
+            android:id="@+id/tv_code2"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="init with code 2" />
+    </GridLayout>
+</ScrollView>
