@@ -2,7 +2,7 @@
 这是一个按钮效果库，解放双手，再也不用写selector
 
 直接上图：
-![demo.gif]()
+![demo.gif](demo.gif)
 ```xml
 <com.wtuadn.pressable.PressableTextView
             android:layout_width="150dp"
