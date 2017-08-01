@@ -1,6 +1,8 @@
 # pressable
 这是一个按钮效果库，解放双手，再也不用写selector
 
+5.0及以上版本自动应用ripple（波纹）效果，5.0以下使用StateListDrawable，按下直接变色
+
 直接上图：
 
 <img src="demo.gif" width="40%">
