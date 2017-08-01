@@ -3,7 +3,7 @@ package com.wtuadn.pressable;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
-interface IPressable extends Drawable.Callback {
+public interface IPressable extends Drawable.Callback {
     Context getContext();
 
     Drawable getBackground();

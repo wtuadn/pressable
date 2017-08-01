@@ -1,1 +1,1 @@
-include ':app',':pressable'
+include ':app', ':library'
