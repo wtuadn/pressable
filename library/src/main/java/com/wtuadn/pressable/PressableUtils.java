@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
@@ -36,12 +35,6 @@ public class PressableUtils {
         setPressableDrawable(iPressable, pressColor, false, 0, -1);
     }
 
-    /**
-     * @param pressColor 按下去的颜色，尽量不要使用带透明的颜色，如#4c000000，透明度通过colorAlpha参数来调节
-     * @param borderless 无边框模式，按下去变色的范围会超出view自身
-     * @param mask_radius 圆角大小
-     * @param colorAlpha 按下去的颜色的透明度
-     */
     public static void setPressableDrawable(IPressable iPressable, int pressColor, boolean borderless, int mask_radius, float colorAlpha) {
         Drawable background = iPressable.getBackground();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -49,48 +42,32 @@ public class PressableUtils {
                 colorAlpha = 0.2f;
             }
             pressColor = adjustAlpha(pressColor, colorAlpha);
-            if (background != null) {
-                GradientDrawable mask = null;
-                if (!borderless) {
-                    if (background instanceof GradientDrawable) {
-                        mask = (GradientDrawable) background.mutate().getConstantState().newDrawable();
-                        mask.setColor(Color.WHITE);
-                    } else {
-                        mask = getRippleMask(mask_radius);
-                    }
-                }
-                setRippleDrawable(iPressable, pressColor, borderless, mask);
-            } else {
-                GradientDrawable mask = null;
-                if (!borderless) {
+            GradientDrawable mask = null;
+            if (!borderless) {
+                if (background instanceof GradientDrawable) {
+                    mask = (GradientDrawable) background.getConstantState().newDrawable().mutate();
+                    mask.setColor(Color.WHITE);
+                } else {
                     mask = getRippleMask(mask_radius);
                 }
-                setRippleDrawable(iPressable, pressColor, borderless, mask);
             }
+            setRippleDrawable(iPressable, pressColor, borderless, mask);
         } else {
             if (colorAlpha > 1 || colorAlpha < 0) {
                 colorAlpha = 0.12f;
             }
             pressColor = adjustAlpha(pressColor, colorAlpha);
             StateListDrawable stateListDrawable = new StateListDrawable();
-            if (background != null) {
-                if (background instanceof GradientDrawable) {
-                    GradientDrawable gradientDrawable = (GradientDrawable) background.mutate().getConstantState().newDrawable();
-                    gradientDrawable.setColor(pressColor);
-                    stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, gradientDrawable);
-                } else {
-                    GradientDrawable mask = new GradientDrawable();
-                    mask.setColor(pressColor);
-                    mask.setCornerRadius(mask_radius);
-                    stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, mask);
-                }
+            GradientDrawable mask;
+            if (background instanceof GradientDrawable) {
+                mask = (GradientDrawable) background.getConstantState().newDrawable().mutate();
+                mask.setColor(pressColor);
             } else {
-                GradientDrawable mask = new GradientDrawable();
+                mask = new GradientDrawable();
                 mask.setColor(pressColor);
                 mask.setCornerRadius(mask_radius);
-                stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, mask);
-                iPressable.setBackgroundDrawable(new ColorDrawable());
             }
+            stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, mask);
             stateListDrawable.setCallback(iPressable);
             iPressable.setPressableDrawable(stateListDrawable);
         }

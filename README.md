@@ -25,7 +25,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency:
 ```gradle
 	dependencies {
-	        compile 'com.github.wtuadn:pressable:v1.0.0'
+	        compile 'com.github.wtuadn:pressable:v1.1.0'
 	}
 ```
 
