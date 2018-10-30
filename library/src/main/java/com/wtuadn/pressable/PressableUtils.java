@@ -11,8 +11,6 @@ import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
 
-import java.lang.reflect.Field;
-
 /**
  * Created by wtuadn on 16-1-7.
  */
@@ -35,6 +33,12 @@ public class PressableUtils {
         setPressableDrawable(iPressable, pressColor, false, 0, -1);
     }
 
+    /**
+     * @param pressColor 按下去的颜色，尽量不要使用带透明的颜色，如#4c000000，透明度通过colorAlpha参数来调节
+     * @param borderless 无边框模式，按下去变色的范围会超出view自身
+     * @param mask_radius 圆角大小
+     * @param colorAlpha 按下去的颜色的透明度
+     */
     public static void setPressableDrawable(IPressable iPressable, int pressColor, boolean borderless, int mask_radius, float colorAlpha) {
         Drawable background = iPressable.getBackground();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -74,13 +78,11 @@ public class PressableUtils {
     }
 
     private static GradientDrawable getRippleMask(int mask_radius) {
-        GradientDrawable mask;
-        mask = new GradientDrawable();
-        mask.setColor(Color.WHITE);
+        GradientDrawable mask = new GradientDrawable();
         if (mask_radius > 0) {
             mask.setCornerRadius(mask_radius);
-            rejectMaskOverBounds(mask);
         }
+        mask.setColor(Color.WHITE);
         return mask;
     }
 
@@ -96,19 +98,6 @@ public class PressableUtils {
         } else {
             rippleDrawable.setCallback(iPressable);
             iPressable.setPressableDrawable(rippleDrawable);
-        }
-    }
-
-    public static void rejectMaskOverBounds(GradientDrawable mask) {
-        try {
-            Field mGradientState = mask.getClass().getDeclaredField("mGradientState");
-            mGradientState.setAccessible(true);
-            Object GradientState = mGradientState.get(mask);
-            Field mOpaqueOverBounds = GradientState.getClass().getDeclaredField("mOpaqueOverBounds");
-            mOpaqueOverBounds.setAccessible(true);
-            mOpaqueOverBounds.set(GradientState, false);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

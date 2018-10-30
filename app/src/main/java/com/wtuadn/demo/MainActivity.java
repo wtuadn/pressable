@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private void initWithCode() {
         //如果背景是GradientDrawable，并且在设置背景后再设置PressableDrawable，
         //按下去的形状就会和设置的GradientDrawable一样
-        PressableTextView tv_code1 = (PressableTextView) findViewById(R.id.tv_code1);
+        PressableTextView tv_code1 = findViewById(R.id.tv_code1);
         GradientDrawable gd = new GradientDrawable();
         gd.setColor(Color.LTGRAY);
         gd.setShape(GradientDrawable.OVAL);
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         PressableUtils.setPressableDrawable(tv_code1, getResources().getColor(R.color.default_black_pressed_color));
 
         //如果背景不是GradientDrawable，就只能自己手动控制圆角大小，透明度等
-        PressableTextView tv_code2 = (PressableTextView) findViewById(R.id.tv_code2);
+        PressableTextView tv_code2 = findViewById(R.id.tv_code2);
         PressableUtils.setPressableDrawable(tv_code2, getResources().getColor(R.color.default_black_pressed_color), false, 100, 0.6f);
     }
 
